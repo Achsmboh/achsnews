@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
   return (
     <div className="bg-brownmuda">
       <div className="h-screen overflow-auto ">
-        <div className="top-0 sticky">
+        <div className="top-0 sticky z-20">
           <Navbar />
         </div>
         <div className="flex flex-col justify-between h-full">
