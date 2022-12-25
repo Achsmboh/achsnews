@@ -1,12 +1,11 @@
 <h1 align="center">AchsNews.</h1>
-<h4 align="center">AchsNews. adalah salah satu web portfolio saya yang berisi tentang kumpulan berita yang didapat dari NewsAPI</h4>
+
 <h4 align="center">Link Deploy : on progress </h4>
 <h4 align="center">Link Desain Figma : https://www.figma.com/file/0sCwBGdThc0FkeH5eWDulB/AchsNews?node-id=1%3A2&t=M8rw7QoMxYVrgaZN-1 </h4>
 
 
 ## About Project
-
-Airbnb dimulai pada tahun 2008 saat dua desainer yang memiliki tempat menerima tiga wisatawan yang membutuhkan tempat menginap. Kini, jutaan Tuan Rumah dan tamu telah membuat akun Airbnb gratis untuk menikmati pandangan unik tentang dunia masing-masing.
+<h4 align="center">AchsNews. adalah salah satu web portfolio saya yang berisi tentang kumpulan berita yang didapat dari NewsAPI</h4>
 
 # Getting Started with Create React App
 
