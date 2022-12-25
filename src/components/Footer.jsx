@@ -60,7 +60,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="mt-2">
+      <div className="lg:mt-0 md:mt-0 mt-2">
         <p className="text-brownmuda text-sm font-Inter flex items-center lg:justify-start md:justify-start justify-center">
           2022 <FaRegCopyright className="mx-1" /> Achmad Maulana Achsan
         </p>
