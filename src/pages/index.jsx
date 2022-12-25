@@ -1,11 +1,15 @@
 import React from "react";
 import Layout from "../components/Layout";
 import CardCategories from "../components/CardCategories";
+import Slider from "../components/Slider";
 
 function Dashboard() {
   return (
     <Layout>
       <div>
+        <div className="h-96 bg-yellow-500 w-full">
+          <Slider />
+        </div>
         <CardCategories
           categories={"Business"}
           title={"Judul Berita"}
