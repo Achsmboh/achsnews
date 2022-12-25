@@ -1,21 +1,35 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import Layout from "../components/Layout";
+import CardCategories from "../components/CardCategories";
 
 function Dashboard() {
   return (
     <Layout>
       <div>
-        <div className="bg-red-200 h-24">Hallo</div>
-        <div className="bg-green-200 h-24">Hallo</div>
-        <div className="bg-yellow-300 h-24">Hallo</div>
-        <div className="bg-red-200 h-24">Hallo</div>
-        <div className="bg-green-200 h-24">Hallo</div>
-        <div className="bg-yellow-300 h-24">Hallo</div>
-        <div className="bg-red-200 h-24">Hallo</div>
-        <div className="bg-green-200 h-24">Hallo</div>
-        <div className="bg-yellow-300 h-24">Hallo</div>
+        <CardCategories
+          categories={"Business"}
+          title={"Judul Berita"}
+          description={
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, distinctio dolorem, minus hic repudiandae voluptas aspernatur consectetur id sequi assumenda unde doloremque ratione eligendi neque molestias? Atque illum itaquelaboriosam."
+          }
+          image={"https://tse1.mm.bing.net/th?id=OIP.PVYHn6BzAueWu6hyxf3hzgHaE7&pid=Api&P=0"}
+        />
+        <CardCategories
+          categories={"Entertainment"}
+          title={"Judul Berita"}
+          description={
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, distinctio dolorem, minus hic repudiandae voluptas aspernatur consectetur id sequi assumenda unde doloremque ratione eligendi neque molestias? Atque illum itaquelaboriosam."
+          }
+          image={"https://tse1.mm.bing.net/th?id=OIP.PVYHn6BzAueWu6hyxf3hzgHaE7&pid=Api&P=0"}
+        />
+        <CardCategories
+          categories={"Sports"}
+          title={"Judul Berita"}
+          description={
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, distinctio dolorem, minus hic repudiandae voluptas aspernatur consectetur id sequi assumenda unde doloremque ratione eligendi neque molestias? Atque illum itaquelaboriosam."
+          }
+          image={"https://tse1.mm.bing.net/th?id=OIP.PVYHn6BzAueWu6hyxf3hzgHaE7&pid=Api&P=0"}
+        />
       </div>
     </Layout>
   );
