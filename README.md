@@ -1,3 +1,13 @@
+<h1 align="center">AchNews.</h1>
+<h3 align="center">Adalah salah satu web poerfolio saya yang berisi tentang kumpulan berita yang didapat dari NewsAPI</h3>
+<h3 align="center">Link Deploy : on progress </h3>
+<h3 align="center">Link Desain Figma : https://www.figma.com/file/0sCwBGdThc0FkeH5eWDulB/AchsNews?node-id=1%3A2&t=M8rw7QoMxYVrgaZN-1 </h3>
+
+
+## About Project
+
+Airbnb dimulai pada tahun 2008 saat dua desainer yang memiliki tempat menerima tiga wisatawan yang membutuhkan tempat menginap. Kini, jutaan Tuan Rumah dan tamu telah membuat akun Airbnb gratis untuk menikmati pandangan unik tentang dunia masing-masing.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
