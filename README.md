@@ -1,7 +1,7 @@
 <h1 align="center">AchNews.</h1>
-<h3 align="center">Adalah salah satu web poerfolio saya yang berisi tentang kumpulan berita yang didapat dari NewsAPI</h3>
-<h3 align="center">Link Deploy : on progress </h3>
-<h3 align="center">Link Desain Figma : https://www.figma.com/file/0sCwBGdThc0FkeH5eWDulB/AchsNews?node-id=1%3A2&t=M8rw7QoMxYVrgaZN-1 </h3>
+<h4 align="center">Adalah salah satu web portfolio saya yang berisi tentang kumpulan berita yang didapat dari NewsAPI</h4>
+<h4 align="center">Link Deploy : on progress </h4>
+<h4 align="center">Link Desain Figma : https://www.figma.com/file/0sCwBGdThc0FkeH5eWDulB/AchsNews?node-id=1%3A2&t=M8rw7QoMxYVrgaZN-1 </h4>
 
 
 ## About Project
