@@ -1,14 +1,13 @@
 import React from "react";
-import image1 from "../assets/image1.jpg";
-import image2 from "../assets/image2.jpg";
-import image3 from "../assets/image3.jpg";
 import { useEffect, useState } from "react";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 
-const featuredProducts = [image1, image2, image3];
+let featuredProducts = [];
 let count = 0;
-export default function Slider() {
+export default function Slider({ image }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  featuredProducts.push(...image);
 
   useEffect(() => {
     startSlider();
