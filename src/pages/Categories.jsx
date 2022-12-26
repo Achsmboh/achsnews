@@ -1,50 +1,61 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CardNews from "../components/CardNews";
 import Layout from "../components/Layout";
 import Slider from "../components/Slider";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 function Categories() {
+  const [datas, setDatas] = useState();
+  const [loading, setLoading] = useState(false);
+  const location = useLocation();
+
+  const category = location?.state.category;
+
+  useEffect(() => {
+    getCategory();
+  }, [category]);
+
+  function getCategory() {
+    setLoading(true);
+    axios
+      .get(`https://newsapi.org/v2/top-headlines?country=id&category=${category}&apiKey=${process.env.REACT_APP_API_KEY}`)
+      .then((ress) => {
+        const result = ress.data.articles;
+        setDatas(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }
+
+  let image = [];
+  datas?.map((datum) => {
+    image.push(datum.urlToImage);
+  });
+
+  console.log("datas", datas);
+
   return (
     <Layout>
       <div className="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1">
-        <div className="lg:col-span-2 md:col-span-2 my-2">
-          <div className="w-full h-96">{/* <Slider /> */}</div>
+        <div className="lg:col-span-2 md:col-span-2 my-2 ">
+          <div className="w-full h-96 shadow-2xl rounded-2xl">
+            <Slider image={image} />
+          </div>
         </div>
-        <div className=" flex justify-center items-center">
-          <CardNews
-            image={"https://tse2.mm.bing.net/th?id=OIP.BkkfzHNYZAD8u0X51EN2PwHaFa&pid=Api&P=0"}
-            title={"Judul Berita"}
-            description={"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime laborum culpa aliquam, nesciunt consequatur accusantium dicta voluptatum"}
-          />
-        </div>
-        <div className=" flex justify-center items-center">
-          <CardNews
-            image={"https://tse2.mm.bing.net/th?id=OIP.BkkfzHNYZAD8u0X51EN2PwHaFa&pid=Api&P=0"}
-            title={"Judul Berita"}
-            description={"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime laborum culpa aliquam, nesciunt consequatur accusantium dicta voluptatum"}
-          />
-        </div>
-        <div className=" flex justify-center items-center">
-          <CardNews
-            image={"https://tse2.mm.bing.net/th?id=OIP.BkkfzHNYZAD8u0X51EN2PwHaFa&pid=Api&P=0"}
-            title={"Judul Berita"}
-            description={"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime laborum culpa aliquam, nesciunt consequatur accusantium dicta voluptatum"}
-          />
-        </div>
-        <div className=" flex justify-center items-center">
-          <CardNews
-            image={"https://tse2.mm.bing.net/th?id=OIP.BkkfzHNYZAD8u0X51EN2PwHaFa&pid=Api&P=0"}
-            title={"Judul Berita"}
-            description={"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime laborum culpa aliquam, nesciunt consequatur accusantium dicta voluptatum"}
-          />
-        </div>
-        <div className=" flex justify-center items-center">
-          <CardNews
-            image={"https://tse2.mm.bing.net/th?id=OIP.BkkfzHNYZAD8u0X51EN2PwHaFa&pid=Api&P=0"}
-            title={"Judul Berita"}
-            description={"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime laborum culpa aliquam, nesciunt consequatur accusantium dicta voluptatum"}
-          />
-        </div>
+        {loading ? (
+          <p>Please Wait</p>
+        ) : (
+          datas?.map((item) => (
+            <div className=" flex justify-center items-center">
+              <CardNews image={item.urlToImage} title={item.title} description={item.description} alt={item.title} key={item.id} date={item.publishedAt} />
+            </div>
+          ))
+        )}
       </div>
     </Layout>
   );

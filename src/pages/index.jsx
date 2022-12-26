@@ -9,9 +9,7 @@ import ima2 from "../assets/image2.jpg";
 import ima3 from "../assets/image3.jpg";
 
 function Dashboard() {
-  const [image1, setImage1] = useState(image0);
-  const [image2, setImage2] = useState(ima2);
-  const [image3, setImage3] = useState(ima3);
+  const [datas, setDatas] = useState();
   const [business, setBusiness] = useState([]);
   const [entertainment, setEntertainment] = useState([]);
   const [general, setGeneral] = useState([]);
@@ -20,7 +18,6 @@ function Dashboard() {
   const [sports, setSports] = useState([]);
   const [technology, setTechnology] = useState([]);
   const [loading, setLoading] = useState(false);
-  const image = [image1, image2, image3];
 
   useEffect(() => {
     getBusiness();
@@ -39,7 +36,6 @@ function Dashboard() {
       .then((ress) => {
         const result = ress.data.articles;
         setBusiness(result[0]);
-        setImage1(result[0].urlToImage);
       })
       .catch((err) => {
         console.log(err);
@@ -56,7 +52,6 @@ function Dashboard() {
       .then((ress) => {
         const result = ress.data.articles;
         setEntertainment(result[0]);
-        setImage2(result[0].urlToImage);
       })
       .catch((err) => {
         console.log(err);
@@ -73,6 +68,7 @@ function Dashboard() {
       .then((ress) => {
         const result = ress.data.articles;
         setGeneral(result[0]);
+        setDatas(result);
       })
       .catch((err) => {
         console.log(err);
@@ -105,7 +101,6 @@ function Dashboard() {
       .then((ress) => {
         const result = ress.data.articles;
         setScience(result[0]);
-        setImage3(result[0].urlToImage);
       })
       .catch((err) => {
         console.log(err);
@@ -147,14 +142,15 @@ function Dashboard() {
       });
   }
 
-  console.log("url", business.urlToImage);
-
-  console.log("image", image);
+  let image = [];
+  datas?.map((datum) => {
+    image.push(datum.urlToImage);
+  });
 
   return (
     <Layout>
       <div>
-        <div className="h-96 bg-yellow-500 w-full">
+        <div className="h-96  w-full">
           <Slider image={image} />
         </div>
         {loading ? <p>Please wait</p> : <CardCategories categories={"Business"} title={business.title} description={business.description} image={business.urlToImage} />}

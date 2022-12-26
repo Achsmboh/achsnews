@@ -1,35 +1,63 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BsFillMenuButtonWideFill } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const Navigate = useNavigate();
+
+  function handleCategory(category) {
+    Navigate(`/categories/${category}`, {
+      state: {
+        category: category,
+      },
+    });
+  }
+
   return (
     <div className="bg-brownmuda w-full h-16 px-5 shadow-lg">
       <div className="flex justify-between">
         <div className=" h-16 flex items-center">
-          <h2 className="text-brown lg:text-3xl md:text-2xl text-2xl font-Inter font-bold p-2 cursor-pointer">AchsNews.</h2>
+          <Link to={"/"}>
+            <h2 className="text-brown lg:text-3xl md:text-2xl text-2xl font-Inter font-bold p-2 cursor-pointer">AchsNews.</h2>
+          </Link>
         </div>
         <div className="lg:flex md:flex items-center hidden">
           <ul className="flex lg:gap-14 gap-2 text-brown font-Inter font-bold justify-between h-full items-center">
             <li className="">
-              <div className="hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm">Business</div>
+              <button onClick={() => handleCategory("Business")} className="hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm">
+                Business
+              </button>
             </li>
             <li>
-              <div className="hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm">Entertainment</div>
+              <button onClick={() => handleCategory("Entertainment")} className="hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm">
+                Entertainment
+              </button>
             </li>
             <li>
-              <div className="hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm">General</div>
+              <button onClick={() => handleCategory("General")} className="hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm">
+                General
+              </button>
             </li>
             <li>
-              <div className="hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm">Health</div>
+              <button onClick={() => handleCategory("Health")} className="hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm">
+                Health
+              </button>
             </li>
             <li>
-              <div className="hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm">Science</div>
+              <button onClick={() => handleCategory("Science")} className="hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm">
+                Science
+              </button>
             </li>
             <li>
-              <div className="hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm">Sports</div>
+              <button onClick={() => handleCategory("Sports")} className="hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm">
+                Sports
+              </button>
             </li>
             <li>
-              <div className="hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm">Technology</div>
+              <button onClick={() => handleCategory("Technology")} className="hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm">
+                Technology
+              </button>
             </li>
           </ul>
         </div>
@@ -68,25 +96,39 @@ const Navbar = () => {
                 </div>
               </div>
               <li className="">
-                <div className="hover:border-b-4 hover:border-b-brown hover:bg-brownmuda font-Inter text-brown font-bold cursor-pointer md:hidden flex text-sm">Business</div>
+                <button onClick={() => handleCategory("Business")} className="hover:border-b-4 hover:border-b-brown hover:bg-brownmuda font-Inter text-brown font-bold cursor-pointer md:hidden flex text-sm">
+                  Business
+                </button>
               </li>
               <li>
-                <div className="hover:border-b-4 hover:border-b-brown hover:bg-brownmuda font-Inter text-brown font-bold cursor-pointer md:hidden flex text-sm">Entertainment</div>
+                <button onClick={() => handleCategory("Entertainment")} className="hover:border-b-4 hover:border-b-brown hover:bg-brownmuda font-Inter text-brown font-bold cursor-pointer md:hidden flex text-sm">
+                  Entertainment
+                </button>
               </li>
               <li>
-                <div className="hover:border-b-4 hover:border-b-brown hover:bg-brownmuda font-Inter text-brown font-bold cursor-pointer md:hidden flex text-sm">General</div>
+                <button onClick={() => handleCategory("General")} className="hover:border-b-4 hover:border-b-brown hover:bg-brownmuda font-Inter text-brown font-bold cursor-pointer md:hidden flex text-sm">
+                  General
+                </button>
               </li>
               <li>
-                <div className="hover:border-b-4 hover:border-b-brown hover:bg-brownmuda font-Inter text-brown font-bold cursor-pointer md:hidden flex text-sm">Health</div>
+                <button onClick={() => handleCategory("Health")} className="hover:border-b-4 hover:border-b-brown hover:bg-brownmuda font-Inter text-brown font-bold cursor-pointer md:hidden flex text-sm">
+                  Health
+                </button>
               </li>
               <li>
-                <div className="hover:border-b-4 hover:border-b-brown hover:bg-brownmuda font-Inter text-brown font-bold cursor-pointer md:hidden flex text-sm">Science</div>
+                <button onClick={() => handleCategory("Science")} className="hover:border-b-4 hover:border-b-brown hover:bg-brownmuda font-Inter text-brown font-bold cursor-pointer md:hidden flex text-sm">
+                  Science
+                </button>
               </li>
               <li>
-                <div className="hover:border-b-4 hover:border-b-brown hover:bg-brownmuda font-Inter text-brown font-bold cursor-pointer md:hidden flex text-sm">Sports</div>
+                <button onClick={() => handleCategory("Sports")} className="hover:border-b-4 hover:border-b-brown hover:bg-brownmuda font-Inter text-brown font-bold cursor-pointer md:hidden flex text-sm">
+                  Sports
+                </button>
               </li>
               <li>
-                <div className="hover:border-b-4 hover:border-b-brown hover:bg-brownmuda font-Inter text-brown font-bold cursor-pointer md:hidden flex text-sm">Technology</div>
+                <button onClick={() => handleCategory("Technology")} className="hover:border-b-4 hover:border-b-brown hover:bg-brownmuda font-Inter text-brown font-bold cursor-pointer md:hidden flex text-sm">
+                  Technology
+                </button>
               </li>
             </ul>
           </div>
