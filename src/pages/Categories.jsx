@@ -8,9 +8,7 @@ function Categories() {
     <Layout>
       <div className="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1">
         <div className="lg:col-span-2 md:col-span-2 my-2">
-          <div className="w-full h-96">
-            <Slider />
-          </div>
+          <div className="w-full h-96">{/* <Slider /> */}</div>
         </div>
         <div className=" flex justify-center items-center">
           <CardNews
