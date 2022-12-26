@@ -1,19 +1,52 @@
 import React from "react";
 import CardNews from "../components/CardNews";
 import Layout from "../components/Layout";
+import Slider from "../components/Slider";
 
 function Categories() {
   return (
     <Layout>
-      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1">
+      <div className="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1">
         <div className="lg:col-span-2 md:col-span-2 my-2">
-          <div className="w-11/12 h-96 bg-green-400"></div>
+          <div className="w-full h-96">
+            <Slider />
+          </div>
         </div>
-        <CardNews />
-        <CardNews />
-        <CardNews />
-        <CardNews />
-        <CardNews />
+        <div className=" flex justify-center items-center">
+          <CardNews
+            image={"https://tse2.mm.bing.net/th?id=OIP.BkkfzHNYZAD8u0X51EN2PwHaFa&pid=Api&P=0"}
+            title={"Judul Berita"}
+            description={"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime laborum culpa aliquam, nesciunt consequatur accusantium dicta voluptatum"}
+          />
+        </div>
+        <div className=" flex justify-center items-center">
+          <CardNews
+            image={"https://tse2.mm.bing.net/th?id=OIP.BkkfzHNYZAD8u0X51EN2PwHaFa&pid=Api&P=0"}
+            title={"Judul Berita"}
+            description={"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime laborum culpa aliquam, nesciunt consequatur accusantium dicta voluptatum"}
+          />
+        </div>
+        <div className=" flex justify-center items-center">
+          <CardNews
+            image={"https://tse2.mm.bing.net/th?id=OIP.BkkfzHNYZAD8u0X51EN2PwHaFa&pid=Api&P=0"}
+            title={"Judul Berita"}
+            description={"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime laborum culpa aliquam, nesciunt consequatur accusantium dicta voluptatum"}
+          />
+        </div>
+        <div className=" flex justify-center items-center">
+          <CardNews
+            image={"https://tse2.mm.bing.net/th?id=OIP.BkkfzHNYZAD8u0X51EN2PwHaFa&pid=Api&P=0"}
+            title={"Judul Berita"}
+            description={"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime laborum culpa aliquam, nesciunt consequatur accusantium dicta voluptatum"}
+          />
+        </div>
+        <div className=" flex justify-center items-center">
+          <CardNews
+            image={"https://tse2.mm.bing.net/th?id=OIP.BkkfzHNYZAD8u0X51EN2PwHaFa&pid=Api&P=0"}
+            title={"Judul Berita"}
+            description={"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime laborum culpa aliquam, nesciunt consequatur accusantium dicta voluptatum"}
+          />
+        </div>
       </div>
     </Layout>
   );
