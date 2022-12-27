@@ -10,6 +10,7 @@ function Categories() {
   const [loading, setLoading] = useState(false);
   const location = useLocation();
   const Navigate = useNavigate();
+  const [title, setTitle] = useState();
 
   const category = location?.state.category;
 
@@ -52,8 +53,18 @@ function Categories() {
     });
   }
 
+  // function untuk search
+  function handleSubmit(event) {
+    Navigate(`/search/${title}`, {
+      state: {
+        title: title,
+      },
+    });
+    event.preventDevault();
+  }
+
   return (
-    <Layout>
+    <Layout onChange={(e) => setTitle(e.target.value)} onSubmit={() => handleSubmit()}>
       <div className="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1">
         <div className="lg:col-span-2 md:col-span-2 my-2 ">
           <div className="w-full h-96 shadow-2xl rounded-2xl">{loading ? <p>Please wait ...</p> : <Slider image={image} />}</div>
