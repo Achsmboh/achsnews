@@ -4,9 +4,7 @@ import CardCategories from "../components/CardCategories";
 import Slider from "../components/Slider";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import image0 from "../assets/image1.jpg";
-import ima2 from "../assets/image2.jpg";
-import ima3 from "../assets/image3.jpg";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
   const [datas, setDatas] = useState();
@@ -18,6 +16,7 @@ function Dashboard() {
   const [sports, setSports] = useState([]);
   const [technology, setTechnology] = useState([]);
   const [loading, setLoading] = useState(false);
+  const Navigate = useNavigate();
 
   useEffect(() => {
     getBusiness();
@@ -147,20 +146,66 @@ function Dashboard() {
     image.push(datum.urlToImage);
   });
 
+  function handleDetail(item, title) {
+    Navigate(`/detail/${title}`, {
+      state: {
+        item: item,
+      },
+    });
+  }
+
+  function handleCategory(category) {
+    Navigate(`/categories/${category}`, {
+      state: {
+        category: category,
+      },
+    });
+  }
+
   return (
     <Layout>
       <div>
         <div className="h-96  w-full">
           <Slider image={image} />
         </div>
-        {loading ? <p>Please wait</p> : <CardCategories categories={"Business"} title={business.title} description={business.description} image={business.urlToImage} />}
+        {loading ? (
+          <p>Please wait</p>
+        ) : (
+          <CardCategories
+            categories={"Business"}
+            title={business.title}
+            description={business.description}
+            image={business.urlToImage}
+            onClick={() => handleDetail(business, business.title)}
+            onCategories={() => handleCategory("Business")}
+          />
+        )}
 
-        <CardCategories categories={"Entertainment"} title={entertainment.title} description={entertainment.description} image={entertainment.urlToImage} />
-        <CardCategories categories={"General"} title={general.title} description={general.description} image={general.urlToImage} />
-        <CardCategories categories={"Health"} title={health.title} description={health.description} image={health.urlToImage} />
-        <CardCategories categories={"Science"} title={science.title} description={science.description} image={science.urlToImage} />
-        <CardCategories categories={"Sports"} title={sports.title} description={sports.description} image={sports.urlToImage} />
-        <CardCategories categories={"Technology"} title={technology.title} description={technology.description} image={technology.urlToImage} />
+        <CardCategories
+          categories={"Entertainment"}
+          title={entertainment.title}
+          description={entertainment.description}
+          image={entertainment.urlToImage}
+          onClick={() => handleDetail(entertainment, entertainment.title)}
+          onCategories={() => handleCategory("Entertainment")}
+        />
+
+        <CardCategories categories={"General"} title={general.title} description={general.description} image={general.urlToImage} onClick={() => handleDetail(general, general.title)} onCategories={() => handleCategory("General")} />
+
+        <CardCategories categories={"Health"} title={health.title} description={health.description} image={health.urlToImage} onClick={() => handleDetail(health, health.title)} onCategories={() => handleCategory("Health")} />
+
+        <CardCategories categories={"Science"} title={science.title} description={science.description} image={science.urlToImage} onClick={() => handleDetail(science, science.title)} onCategories={() => handleCategory("Science")} />
+
+        <CardCategories categories={"Sports"} title={sports.title} description={sports.description} image={sports.urlToImage} onClick={() => handleDetail(sports, sports.title)} onCategories={() => handleCategory("Sports")} />
+
+        <CardCategories
+          categories={"Technology"}
+          title={technology.title}
+          description={technology.description}
+          image={technology.urlToImage}
+          onClick={() => handleDetail(technology, technology.title)}
+          onCategories={() => handleCategory("Technology")}
+        />
       </div>
     </Layout>
   );

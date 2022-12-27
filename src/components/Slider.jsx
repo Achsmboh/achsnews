@@ -32,7 +32,7 @@ export default function Slider({ image }) {
 
   return (
     <div className="w-full select-none relative object-center rounded-2xl">
-      <img className="w-full h-96 object-cover rounded-2xl" src={featuredProducts[currentIndex]} alt="" />
+      <img className="w-full h-96 object-cover rounded-2xl" src={featuredProducts[currentIndex]} alt="image" />
       <div
         className="absolute top-1/2 w-full px-3 transform -translate-y-1/2 
        flex justify-between"
