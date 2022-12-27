@@ -2,9 +2,9 @@ import React from "react";
 import { FiArrowUpRight } from "react-icons/fi";
 import { AiOutlineClockCircle } from "react-icons/ai";
 
-const CardNews = ({ date, title, description, image, key, alt, onClick }) => {
+const CardNews = ({ date, title, description, image, alt, onClick }) => {
   return (
-    <div key={key} className="w-80 h-96 bg-white m-1 mb-4 rounded-2xl shadow-md ">
+    <div className="w-80 h-96 bg-white m-1 mb-4 rounded-2xl shadow-md ">
       <div className="w-full h-52 rounded-2xl">
         <img className="object-cover w-full h-52 rounded-t-2xl" src={image} alt={alt} />
       </div>
@@ -13,7 +13,7 @@ const CardNews = ({ date, title, description, image, key, alt, onClick }) => {
           <AiOutlineClockCircle />
         </div>
         <div>
-          <p className="text-brown  font-Inter text-sm">{date.substring(0, 10)}</p>
+          <p className="text-brown  font-Inter text-sm">{date?.substring(0, 10)}</p>
         </div>
       </div>
       <div className=" px-2 flex flex-col justify-between h-36 ">

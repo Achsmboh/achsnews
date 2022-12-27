@@ -5,6 +5,7 @@ import Slider from "../components/Slider";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import CardNews from "../components/CardNews";
 
 function Dashboard() {
   const [datas, setDatas] = useState();
@@ -17,6 +18,8 @@ function Dashboard() {
   const [technology, setTechnology] = useState([]);
   const [loading, setLoading] = useState(false);
   const Navigate = useNavigate();
+  // ini untuk masukan search
+  const [title, setTitle] = useState();
 
   useEffect(() => {
     getBusiness();
@@ -31,7 +34,7 @@ function Dashboard() {
   function getBusiness() {
     setLoading(true);
     axios
-      .get(`https://newsapi.org/v2/top-headlines?country=id&category=business&apiKey=${process.env.REACT_APP_API_KEY}`)
+      .get(`https://newsapi.org/v2/top-headlines?country=id&category=business&pageSize=2&apiKey=${process.env.REACT_APP_API_KEY}`)
       .then((ress) => {
         const result = ress.data.articles;
         setBusiness(result[0]);
@@ -47,7 +50,7 @@ function Dashboard() {
   function getEntertainment() {
     setLoading(true);
     axios
-      .get(`https://newsapi.org/v2/top-headlines?country=id&category=Entertainment&apiKey=${process.env.REACT_APP_API_KEY}`)
+      .get(`https://newsapi.org/v2/top-headlines?country=id&category=Entertainment&pageSize=2&apiKey=${process.env.REACT_APP_API_KEY}`)
       .then((ress) => {
         const result = ress.data.articles;
         setEntertainment(result[0]);
@@ -80,7 +83,7 @@ function Dashboard() {
   function getHealth() {
     setLoading(true);
     axios
-      .get(`https://newsapi.org/v2/top-headlines?country=id&category=health&apiKey=${process.env.REACT_APP_API_KEY}`)
+      .get(`https://newsapi.org/v2/top-headlines?country=id&category=health&pageSize=2&apiKey=${process.env.REACT_APP_API_KEY}`)
       .then((ress) => {
         const result = ress.data.articles;
         setHealth(result[1]);
@@ -96,7 +99,7 @@ function Dashboard() {
   function getScience() {
     setLoading(true);
     axios
-      .get(`https://newsapi.org/v2/top-headlines?country=id&category=Science&apiKey=${process.env.REACT_APP_API_KEY}`)
+      .get(`https://newsapi.org/v2/top-headlines?country=id&category=Science&pageSize=2&apiKey=${process.env.REACT_APP_API_KEY}`)
       .then((ress) => {
         const result = ress.data.articles;
         setScience(result[0]);
@@ -112,7 +115,7 @@ function Dashboard() {
   function getSports() {
     setLoading(true);
     axios
-      .get(`https://newsapi.org/v2/top-headlines?country=id&category=Sports&apiKey=${process.env.REACT_APP_API_KEY}`)
+      .get(`https://newsapi.org/v2/top-headlines?country=id&category=Sports&pageSize=2&apiKey=${process.env.REACT_APP_API_KEY}`)
       .then((ress) => {
         const result = ress.data.articles;
         setSports(result[0]);
@@ -128,10 +131,11 @@ function Dashboard() {
   function getTechnology() {
     setLoading(true);
     axios
-      .get(`https://newsapi.org/v2/top-headlines?country=id&category=Technology&apiKey=${process.env.REACT_APP_API_KEY}`)
+      .get(`https://newsapi.org/v2/top-headlines?country=id&category=Technology&pageSize=2&apiKey=${process.env.REACT_APP_API_KEY}`)
       .then((ress) => {
         const result = ress.data.articles;
         setTechnology(result[0]);
+        console.log("tecno", result);
       })
       .catch((err) => {
         console.log(err);
@@ -162,8 +166,18 @@ function Dashboard() {
     });
   }
 
+  // function untuk search
+  function handleSubmit(event) {
+    Navigate(`/search/${title}`, {
+      state: {
+        title: title,
+      },
+    });
+    event.preventDevault("");
+  }
+
   return (
-    <Layout>
+    <Layout onSubmit={() => handleSubmit()} onChange={(e) => setTitle(e.target.value)}>
       <div>
         <div className="h-96  w-full">
           <Slider image={image} />
@@ -206,6 +220,17 @@ function Dashboard() {
           onClick={() => handleDetail(technology, technology.title)}
           onCategories={() => handleCategory("Technology")}
         />
+        <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-1">
+          {loading ? (
+            <p>Please Wait</p>
+          ) : (
+            datas?.map((item) => (
+              <div className=" flex justify-center items-center">
+                <CardNews image={item.urlToImage} title={item.title} description={item.description} alt={item.title} key={item.id} date={item.publishedAt} onClick={() => handleDetail(item, item.title)} />
+              </div>
+            ))
+          )}
+        </div>
       </div>
     </Layout>
   );

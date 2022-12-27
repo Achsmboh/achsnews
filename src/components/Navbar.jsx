@@ -3,8 +3,9 @@ import { BsFillMenuButtonWideFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ onSubmit, onChange }) => {
   const Navigate = useNavigate();
+  const [title, setTitle] = useState();
 
   function handleCategory(category) {
     Navigate(`/categories/${category}`, {
@@ -12,6 +13,15 @@ const Navbar = () => {
         category: category,
       },
     });
+  }
+
+  function handleSubmit(event) {
+    Navigate(`/search/${title}`, {
+      state: {
+        title: title,
+      },
+    });
+    event.preventDevault();
   }
 
   return (
@@ -62,16 +72,16 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="h-16 lg:flex items-center hidden">
-          <div className="form-control">
+          <form onSubmit={onSubmit} className="form-control ">
             <div className="input-group">
-              <input type="text" placeholder="Search…" className="input input-bordered focus:outline-brown bg-white" />
+              <input onChange={onChange} type="text" placeholder="Search…" className="input input-bordered focus:outline-brown bg-white" />
               <button className="btn btn-square bg-brown border-none">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </button>
             </div>
-          </div>
+          </form>
         </div>
         <div className="lg:hidden flex mx-2 h-16  items-center">
           <div className="dropdown dropdown-bottom dropdown-end">
@@ -83,16 +93,16 @@ const Navbar = () => {
             <ul tabIndex={0} className="dropdown-content menu p-2 shadow focus:bg-brownmuda bg-brownmuda rounded-box w-72">
               <div>
                 <div className="w-full ">
-                  <div className="form-control w-full bg-red-600-red-300">
+                  <form onSubmit={onSubmit} className="form-control w-full bg-red-600-red-300">
                     <div className="input-group w-full">
-                      <input type="text" placeholder="Search…" className="input input-bordered focus:outline-brown w-full bg-white" />
+                      <input onChange={onChange} type="text" placeholder="Search…" className="input input-bordered focus:outline-brown w-full bg-white" />
                       <button className="btn btn-square bg-brown border-none">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
                       </button>
                     </div>
-                  </div>
+                  </form>
                 </div>
               </div>
               <li className="">

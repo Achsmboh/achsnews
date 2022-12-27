@@ -1,21 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../components/Layout";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { BsPencilFill } from "react-icons/bs";
 
 function Detail() {
   const location = useLocation();
+  const [title, setTitle] = useState();
+  const Navigate = useNavigate();
 
-  const item = location?.state.item;
+  const item = location?.state?.item;
 
-  console.log("item", item);
+  // function untuk search
+  function handleSubmit(event) {
+    Navigate(`/search/${title}`, {
+      state: {
+        title: title,
+      },
+    });
+    event.preventDevault();
+  }
 
   return (
-    <Layout>
+    <Layout onChange={(e) => setTitle(e.target.value)} onSubmit={() => handleSubmit()}>
       <div className="lg:grid grid-cols-2 gap-5">
-        <div className="h-96 w-full bg-yellow-400">
-          <img className="w-full h-full object-cover object-top" src={item.urlToImage} alt="foto" />
+        <div className="h-96 w-full">
+          <img className="w-full h-full object-cover object-top" src={item.urlToImage} alt={item.title} />
         </div>
         <div>
           <div className="py-3">
