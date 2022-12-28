@@ -26,13 +26,25 @@ const Footer = () => {
             <div className="flex flex-col justify-between lg:h-full">
               <div>
                 <p className="font-Inter text-brownmuda text-sm">
-                  AchsNews merupakan salah satu portfolio yang saya miliki. Achsnews adalah sebuah web yang
+                  AchsNews merupakan salah satu portfolio yang{" "}
+                  <span title="Achmad Maulana Achsan">
+                    {` `}
+                    <a href="https://achmad-maulana-achsan.netlify.app/">saya</a>
+                    {` `}
+                  </span>{" "}
+                  miliki. AchsNews. adalah sebuah web yang
                   <span title="Achmad Maulana Achsan">
                     {` `}
                     <a href="https://achmad-maulana-achsan.netlify.app/">saya</a>
                     {` `}
                   </span>
-                  buat dan kelola sebagai salah satu contoh dari karya atau hasil pekerjaan saya.
+                  buat dan kelola sebagai salah satu contoh dari karya atau hasil pekerjaan{" "}
+                  <span title="Achmad Maulana Achsan">
+                    {` `}
+                    <a href="https://achmad-maulana-achsan.netlify.app/">saya</a>
+                    {` `}
+                  </span>
+                  .
                 </p>
               </div>
               <div>

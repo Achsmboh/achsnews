@@ -40,7 +40,7 @@ const Navbar = ({ onSubmit, onChange, border }) => {
               </button>
             </li>
             <li>
-              <button onClick={() => handleCategory("Health")} className={`${border == "Health" ? "border" : ""}-b-4 border-b-border hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm`}>
+              <button onClick={() => handleCategory("Health")} className={`${border == "Health" ? "border" : ""}-b-4 border-b-brown hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm`}>
                 Health
               </button>
             </li>

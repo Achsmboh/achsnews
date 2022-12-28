@@ -8,22 +8,36 @@ import { LoadingOne, LoadingTwo } from "../components/Loading";
 import Swal from "sweetalert2";
 
 function Categories() {
-  const [datas, setDatas] = useState();
+  const [datas, setDatas] = useState([]);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
   const Navigate = useNavigate();
   const [title, setTitle] = useState();
+  const [page, setPage] = useState(1);
 
   const category = location?.state.category;
 
   useEffect(() => {
     getCategory();
+    setPage(1);
   }, [category]);
+
+  useEffect(() => {
+    getCategory();
+  }, [page]);
+
+  const handlePrev = () => {
+    setPage(page - 1);
+  };
+
+  const handleNext = () => {
+    setPage(page + 1);
+  };
 
   function getCategory() {
     setLoading(true);
     axios
-      .get(`https://newsapi.org/v2/top-headlines?country=id&category=${category}&pageSize=20&apiKey=${process.env.REACT_APP_API_KEY}`)
+      .get(`https://newsapi.org/v2/top-headlines?country=id&category=${category}&pageSize=8&page=${page}&apiKey=${process.env.REACT_APP_API_KEY}`)
       .then((ress) => {
         const result = ress.data.articles;
         setDatas(result);
@@ -73,13 +87,31 @@ function Categories() {
         </div>
         {loading ? (
           <LoadingOne />
-        ) : (
+        ) : datas?.length !== 0 ? (
           datas?.map((item) => (
             <div className=" flex justify-center items-center">
               <CardNews image={item.urlToImage} title={item.title} description={item.description} alt={item.title} key={item.id} date={item.publishedAt} onClick={() => handleDetail(item, item.title)} />
             </div>
           ))
+        ) : (
+          <div className=" lg:col-span-5 md:col-span-2 col-span-1 h-96 flex justify-center items-center">
+            <div>
+              <p className="text-brown font-Inter text-xl w-full text-center">Kami tidak menemukan hasil lagi untuk kategori : {category}</p>
+              <p className="text-brown font-Inter text-xl w-full text-center">Silakan kembali ke page sebelumnya.</p>
+            </div>
+          </div>
         )}
+
+        <div className="lg:col-span-5 md:col-span-2 col-span-1 flex justify-center items-center">
+          <div className="btn-group grid grid-cols-2">
+            <button disabled={page === 1 ? true : false} className="btn btn-outline" onClick={() => handlePrev()}>
+              Previous page
+            </button>
+            <button disabled={datas.length < 8 ? true : false} className="btn btn-outline" onClick={() => handleNext()}>
+              Next
+            </button>
+          </div>
+        </div>
       </div>
     </Layout>
   );
