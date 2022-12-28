@@ -13,8 +13,13 @@ function Search2() {
   const Navigate = useNavigate();
   //   ini untuk masukan search
   const [title, setTitle] = useState();
+  const [page, setPage] = useState(1);
 
   const search = location?.state.search;
+
+  useEffect(() => {
+    getSearch();
+  }, [page]);
 
   useEffect(() => {
     getSearch();
@@ -25,7 +30,7 @@ function Search2() {
     axios
       .get(
         `
-    https://newsapi.org/v2/top-headlines?q=${search}&country=id&apiKey=${process.env.REACT_APP_API_KEY}`
+    https://newsapi.org/v2/top-headlines?q=${search}&country=id&pageSize=8&page=${page}&apiKey=${process.env.REACT_APP_API_KEY}`
       )
       .then((ress) => {
         const result = ress.data.articles;
@@ -62,6 +67,15 @@ function Search2() {
     });
     event.preventDevault("");
   }
+
+  const handlePrev = () => {
+    setPage(page - 1);
+  };
+
+  const handleNext = () => {
+    setPage(page + 1);
+  };
+
   const datasLength = datas?.length;
   return (
     <Layout onSubmit={() => handleSubmit()} onChange={(e) => setTitle(e.target.value)}>
@@ -87,13 +101,23 @@ function Search2() {
             </div>
           ))
         ) : (
-          <div className=" lg:col-span-5 md:col-span-2 col-span-1 lg:h-96 flex justify-center items-center">
+          <div className=" lg:col-span-5 md:col-span-2 col-span-1 h-96 flex justify-center items-center">
             <div>
               <p className="text-brown font-Inter text-xl w-full text-center">Kami tidak menemukan hasil untuk: {search}</p>
               <p className="text-brown font-Inter text-xl w-full text-center">Periksa ejaan atau ketik kueri baru.</p>
             </div>
           </div>
         )}
+      </div>
+      <div className="lg:col-span-5 md:col-span-2 col-span-1 flex justify-center items-center">
+        <div className="btn-group grid grid-cols-2">
+          <button onClick={() => handlePrev()} disabled={page === 1 ? true : false} className="btn btn-outline">
+            Previous page
+          </button>
+          <button onClick={() => handleNext()} disabled={datasLength < 8 ? true : false} className="btn btn-outline">
+            Next
+          </button>
+        </div>
       </div>
     </Layout>
   );

@@ -13,8 +13,13 @@ function Search() {
   const Navigate = useNavigate();
   // masukan Search
   const [search, setSearch] = useState();
+  const [page, setPage] = useState(1);
 
   const title = location?.state.title;
+
+  useEffect(() => {
+    getSearch();
+  }, [page]);
 
   useEffect(() => {
     getSearch();
@@ -25,7 +30,7 @@ function Search() {
     axios
       .get(
         `
-    https://newsapi.org/v2/top-headlines?q=${title}&country=id&apiKey=${process.env.REACT_APP_API_KEY}`
+    https://newsapi.org/v2/top-headlines?q=${title}&country=id&pageSize=8&page=${page}&apiKey=${process.env.REACT_APP_API_KEY}`
       )
       .then((ress) => {
         const result = ress.data.articles;
@@ -63,6 +68,14 @@ function Search() {
     event.preventDevault("");
   }
 
+  const handlePrev = () => {
+    setPage(page - 1);
+  };
+
+  const handleNext = () => {
+    setPage(page + 1);
+  };
+
   const datasLength = datas?.length;
   return (
     <Layout onChange={(e) => setSearch(e.target.value)} onSubmit={() => handleSubmit()}>
@@ -87,13 +100,23 @@ function Search() {
             </div>
           ))
         ) : (
-          <div className=" lg:col-span-5 md:col-span-2 col-span-1 lg:h-96 flex justify-center items-center">
+          <div className=" lg:col-span-5 md:col-span-2 col-span-1 h-96 flex justify-center items-center">
             <div>
               <p className="text-brown font-Inter text-xl w-full text-center">Kami tidak menemukan hasil untuk: {title}</p>
               <p className="text-brown font-Inter text-xl w-full text-center">Periksa ejaan atau ketik kueri baru.</p>
             </div>
           </div>
         )}
+      </div>
+      <div className="lg:col-span-5 md:col-span-2 col-span-1 flex justify-center items-center">
+        <div className="btn-group grid grid-cols-2">
+          <button onClick={() => handlePrev()} disabled={page === 1 ? true : false} className="btn btn-outline">
+            Previous page
+          </button>
+          <button onClick={() => handleNext()} disabled={datasLength < 8 ? true : false} className="btn btn-outline">
+            Next
+          </button>
+        </div>
       </div>
     </Layout>
   );
