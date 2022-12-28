@@ -17,7 +17,7 @@ const CardCategories = ({ categories, title, description, image, onClick, onCate
             <div className="lg:w-2/3 md:w-2/3 h-full flex flex-col justify-center">
               <div className="flex flex-col justify-between lg:h-2/3 lg:pr-2 md:pr-2">
                 <div className="lg:hidden md:hidden grid w-full h-32">
-                  <img src={image} alt="foto" className="w-full h-32 object-cover object-center" />
+                  <img src={image} alt={image} className="w-full h-32 object-cover object-center" />
                 </div>
                 <h2 className="font-Inter text-brown font-bold lg:text-2xl md:text-2xl">{title}</h2>
                 <p className="font-Inter text-brown text-sm ">{description}</p>
@@ -28,7 +28,7 @@ const CardCategories = ({ categories, title, description, image, onClick, onCate
               </div>
             </div>
             <div className="lg:grid md:grid hidden w-56 h-56">
-              <img src={image} alt="foto" className="w-56 h-56 object-cover" />
+              <img src={image} alt={image} className="w-56 h-56 object-cover" />
             </div>
           </div>
         </div>

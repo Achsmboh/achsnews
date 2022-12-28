@@ -4,6 +4,7 @@ import Layout from "../components/Layout";
 import Slider from "../components/Slider";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
+import { LoadingOne, LoadingTwo } from "../components/Loading";
 
 function Categories() {
   const [datas, setDatas] = useState();
@@ -21,7 +22,7 @@ function Categories() {
   function getCategory() {
     setLoading(true);
     axios
-      .get(`https://newsapi.org/v2/top-headlines?country=id&category=${category}&apiKey=${process.env.REACT_APP_API_KEY}`)
+      .get(`https://newsapi.org/v2/top-headlines?country=id&category=${category}&pageSize=20&apiKey=${process.env.REACT_APP_API_KEY}`)
       .then((ress) => {
         const result = ress.data.articles;
         setDatas(result);
@@ -38,12 +39,6 @@ function Categories() {
   datas?.map((datum) => {
     image.push(datum.urlToImage);
   });
-
-  useEffect(() => {
-    datas?.map((datum) => {
-      image.push(datum.urlToImage);
-    });
-  }, [loading]);
 
   function handleDetail(item, title) {
     Navigate(`/detail/${title}`, {
@@ -64,13 +59,13 @@ function Categories() {
   }
 
   return (
-    <Layout onChange={(e) => setTitle(e.target.value)} onSubmit={() => handleSubmit()}>
+    <Layout border={category} onChange={(e) => setTitle(e.target.value)} onSubmit={() => handleSubmit()}>
       <div className="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1">
         <div className="lg:col-span-2 md:col-span-2 my-2 ">
-          <div className="w-full h-96 shadow-2xl rounded-2xl">{loading ? <p>Please wait ...</p> : <Slider image={image} />}</div>
+          <div className="w-full h-96 shadow-2xl rounded-2xl">{loading ? <LoadingTwo /> : <Slider image={image} />}</div>
         </div>
         {loading ? (
-          <p>Please Wait</p>
+          <LoadingOne />
         ) : (
           datas?.map((item) => (
             <div className=" flex justify-center items-center">
