@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BsFillMenuButtonWideFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -25,7 +25,7 @@ const Navbar = ({ onSubmit, onChange, border }) => {
         <div className="lg:flex md:flex items-center hidden">
           <ul className="flex lg:gap-14 gap-2 text-brown font-Inter font-bold justify-between h-full items-center">
             <li className="">
-              <button onClick={() => handleCategory("Business")} className={`hover:border-b-4 ${border === "Business" ? "border" : ""}-b-4 border-b-brown hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm`}>
+              <button onClick={() => handleCategory("Business")} className={`hover:border-b-4 ${border == "Business" ? "border" : ""}-b-4 border-b-brown hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm`}>
                 Business
               </button>
             </li>
