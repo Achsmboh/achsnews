@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import CardNews from "../components/CardNews";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
+import { LoadingThree } from "../components/Loading";
 
 function Search() {
   const [datas, setDatas] = useState();
@@ -55,17 +56,36 @@ function Search() {
     event.preventDevault("");
   }
 
+  const datasLength = datas?.length;
   return (
     <Layout onChange={(e) => setSearch(e.target.value)} onSubmit={() => handleSubmit()}>
+      {datasLength !== 0 ? (
+        <div className="mb-3">
+          <p className="font-Inter text-sm text-brown lg:col-span-5 md:col-span-2 col-span-1">
+            Sekitar {datasLength} hasil pencarian untuk {title}
+          </p>
+        </div>
+      ) : (
+        <></>
+      )}
       <div className="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1 w-full ">
-        {datas ? (
-          datas.map((datum) => (
+        {loading ? (
+          <div className="lg:col-span-5 md:col-span-2 col-span-1 h-96">
+            <LoadingThree />
+          </div>
+        ) : datasLength !== 0 ? (
+          datas?.map((datum) => (
             <div className=" flex justify-center items-center">
               <CardNews key={datum.title} onClick={() => handleDetail(datum, datum.title)} title={datum.title} date={datum.publishedAt} image={datum.urlToImage} description={datum.description} />
             </div>
           ))
         ) : (
-          <p>Loading</p>
+          <div className=" lg:col-span-5 md:col-span-2 col-span-1 lg:h-96 flex justify-center items-center">
+            <div>
+              <p className="text-brown font-Inter text-xl w-full text-center">Kami tidak menemukan hasil untuk: {title}</p>
+              <p className="text-brown font-Inter text-xl w-full text-center">Periksa ejaan atau ketik kueri baru.</p>
+            </div>
+          </div>
         )}
       </div>
     </Layout>

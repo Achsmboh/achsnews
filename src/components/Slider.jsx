@@ -1,22 +1,26 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
+import { LoadingFour } from "./Loading";
 
-let featuredProducts = [];
-let count = 0;
 export default function Slider({ image }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  featuredProducts.push(...image);
+  const [featuredProducts, setFeaturedProduct] = useState([]);
+  const [loading, setLoading] = useState(false);
+  let count = 0;
 
   useEffect(() => {
-    startSlider();
+    setFeaturedProduct(image);
+  }, []);
+
+  useEffect(() => {
+    // startSlider();
   }, []);
 
   const startSlider = () => {
     setInterval(() => {
-      handleNext();
-    }, 5000);
+      handlePrev();
+    }, 2000);
   };
 
   const handleNext = () => {
@@ -32,7 +36,8 @@ export default function Slider({ image }) {
 
   return (
     <div className="w-full select-none relative object-center rounded-2xl">
-      <img className="w-full h-96 object-cover rounded-2xl" src={featuredProducts[currentIndex]} alt="image" />
+      {featuredProducts ? <img className="w-full h-96 object-cover rounded-2xl" src={featuredProducts[currentIndex]} alt={featuredProducts[currentIndex]} /> : <LoadingFour />}
+
       <div
         className="absolute top-1/2 w-full px-3 transform -translate-y-1/2 
        flex justify-between"

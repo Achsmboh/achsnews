@@ -6,7 +6,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import CardNews from "../components/CardNews";
+import { LoadingTwo, LoadingThree } from "../components/Loading";
 
+let image = [];
 function Dashboard() {
   const [datas, setDatas] = useState();
   const [business, setBusiness] = useState([]);
@@ -66,7 +68,7 @@ function Dashboard() {
   function getGeneral() {
     setLoading(true);
     axios
-      .get(`https://newsapi.org/v2/top-headlines?country=id&category=General&apiKey=${process.env.REACT_APP_API_KEY}`)
+      .get(`https://newsapi.org/v2/top-headlines?country=id&category=General&pageSize=10&apiKey=${process.env.REACT_APP_API_KEY}`)
       .then((ress) => {
         const result = ress.data.articles;
         setGeneral(result[0]);
@@ -135,7 +137,6 @@ function Dashboard() {
       .then((ress) => {
         const result = ress.data.articles;
         setTechnology(result[0]);
-        console.log("tecno", result);
       })
       .catch((err) => {
         console.log(err);
@@ -145,7 +146,6 @@ function Dashboard() {
       });
   }
 
-  let image = [];
   datas?.map((datum) => {
     image.push(datum.urlToImage);
   });
@@ -179,11 +179,9 @@ function Dashboard() {
   return (
     <Layout onSubmit={() => handleSubmit()} onChange={(e) => setTitle(e.target.value)}>
       <div>
-        <div className="h-96  w-full">
-          <Slider image={image} />
-        </div>
+        <div className="h-96  w-full">{loading ? <LoadingTwo /> : <Slider image={image} />}</div>
         {loading ? (
-          <p>Please wait</p>
+          <LoadingThree />
         ) : (
           <CardCategories
             categories={"Business"}
@@ -195,38 +193,63 @@ function Dashboard() {
           />
         )}
 
-        <CardCategories
-          categories={"Entertainment"}
-          title={entertainment.title}
-          description={entertainment.description}
-          image={entertainment.urlToImage}
-          onClick={() => handleDetail(entertainment, entertainment.title)}
-          onCategories={() => handleCategory("Entertainment")}
-        />
+        {loading ? (
+          <LoadingThree />
+        ) : (
+          <CardCategories
+            categories={"Entertainment"}
+            title={entertainment.title}
+            description={entertainment.description}
+            image={entertainment.urlToImage}
+            onClick={() => handleDetail(entertainment, entertainment.title)}
+            onCategories={() => handleCategory("Entertainment")}
+          />
+        )}
 
-        <CardCategories categories={"General"} title={general.title} description={general.description} image={general.urlToImage} onClick={() => handleDetail(general, general.title)} onCategories={() => handleCategory("General")} />
+        {loading ? (
+          <LoadingThree />
+        ) : (
+          <CardCategories categories={"General"} title={general.title} description={general.description} image={general.urlToImage} onClick={() => handleDetail(general, general.title)} onCategories={() => handleCategory("General")} />
+        )}
 
-        <CardCategories categories={"Health"} title={health.title} description={health.description} image={health.urlToImage} onClick={() => handleDetail(health, health.title)} onCategories={() => handleCategory("Health")} />
+        {loading ? (
+          <LoadingThree />
+        ) : (
+          <CardCategories categories={"Health"} title={health.title} description={health.description} image={health.urlToImage} onClick={() => handleDetail(health, health.title)} onCategories={() => handleCategory("Health")} />
+        )}
 
-        <CardCategories categories={"Science"} title={science.title} description={science.description} image={science.urlToImage} onClick={() => handleDetail(science, science.title)} onCategories={() => handleCategory("Science")} />
+        {loading ? (
+          <LoadingThree />
+        ) : (
+          <CardCategories categories={"Science"} title={science.title} description={science.description} image={science.urlToImage} onClick={() => handleDetail(science, science.title)} onCategories={() => handleCategory("Science")} />
+        )}
 
-        <CardCategories categories={"Sports"} title={sports.title} description={sports.description} image={sports.urlToImage} onClick={() => handleDetail(sports, sports.title)} onCategories={() => handleCategory("Sports")} />
+        {loading ? (
+          <LoadingThree />
+        ) : (
+          <CardCategories categories={"Sports"} title={sports.title} description={sports.description} image={sports.urlToImage} onClick={() => handleDetail(sports, sports.title)} onCategories={() => handleCategory("Sports")} />
+        )}
 
-        <CardCategories
-          categories={"Technology"}
-          title={technology.title}
-          description={technology.description}
-          image={technology.urlToImage}
-          onClick={() => handleDetail(technology, technology.title)}
-          onCategories={() => handleCategory("Technology")}
-        />
+        {loading ? (
+          <LoadingThree />
+        ) : (
+          <CardCategories
+            categories={"Technology"}
+            title={technology.title}
+            description={technology.description}
+            image={technology.urlToImage}
+            onClick={() => handleDetail(technology, technology.title)}
+            onCategories={() => handleCategory("Technology")}
+          />
+        )}
+
         <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-1">
           {loading ? (
-            <p>Please Wait</p>
+            <LoadingThree />
           ) : (
             datas?.map((item) => (
               <div className=" flex justify-center items-center">
-                <CardNews image={item.urlToImage} title={item.title} description={item.description} alt={item.title} key={item.id} date={item.publishedAt} onClick={() => handleDetail(item, item.title)} />
+                <CardNews image={item.urlToImage} title={item.title} description={item.description} alt={item.title} key={item.urlToImage} date={item.publishedAt} onClick={() => handleDetail(item, item.title)} />
               </div>
             ))
           )}
