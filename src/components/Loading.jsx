@@ -4,7 +4,7 @@ import { DotLoader, PropagateLoader, ClimbingBoxLoader } from "react-spinners";
 
 const LoadingOne = () => {
   return (
-    <div className="sweet-loading  w-full lg:col-span-3 md:cols-span-2 col-span-1 flex justify-center items-center">
+    <div className="sweet-loading  w-full lg:col-span-3 md:col-span-2 h-96 col-span-1 flex justify-center items-center">
       <ClipLoader color={"#1E1E1E"} loading={true} size={150} />
     </div>
   );
@@ -28,7 +28,7 @@ const LoadingThree = () => {
 
 const LoadingFour = () => {
   return (
-    <div className="sweet-loading lg:h-96 md:h-96 w-full col-span-3 flex justify-center items-center">
+    <div className="sweet-loading lg:h-96 h-96 w-full col-span-3 flex justify-center items-center">
       <ClimbingBoxLoader color="#1E1E1E" />
     </div>
   );

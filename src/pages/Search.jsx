@@ -4,6 +4,7 @@ import CardNews from "../components/CardNews";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { LoadingThree } from "../components/Loading";
+import Swal from "sweetalert2";
 
 function Search() {
   const [datas, setDatas] = useState();
@@ -31,7 +32,13 @@ function Search() {
         setDatas(result);
       })
       .catch((err) => {
-        console.log(err);
+        err.response.status === 429
+          ? Navigate("/informasi")
+          : Swal.fire({
+              icon: "error",
+              title: err.response.data.code,
+              text: err.response.data.message,
+            });
       })
       .finally(() => {
         setLoading(false);
