@@ -7,6 +7,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import CardNews from "../components/CardNews";
 import { LoadingTwo, LoadingThree } from "../components/Loading";
+import Swal from "sweetalert2";
 
 let image = [];
 function Dashboard() {
@@ -42,7 +43,13 @@ function Dashboard() {
         setBusiness(result[0]);
       })
       .catch((err) => {
-        console.log(err);
+        err.response.status === 429
+          ? Navigate("/informasi")
+          : Swal.fire({
+              icon: "error",
+              title: err.response.data.code,
+              text: err.response.data.message,
+            });
       })
       .finally(() => {
         setLoading(false);
@@ -58,7 +65,13 @@ function Dashboard() {
         setEntertainment(result[0]);
       })
       .catch((err) => {
-        console.log(err);
+        err.response.status === 429
+          ? Navigate("/informasi")
+          : Swal.fire({
+              icon: "error",
+              title: err.response.data.code,
+              text: err.response.data.message,
+            });
       })
       .finally(() => {
         setLoading(false);
@@ -75,7 +88,13 @@ function Dashboard() {
         setDatas(result);
       })
       .catch((err) => {
-        console.log(err);
+        err.response.status === 429
+          ? Navigate("/informasi")
+          : Swal.fire({
+              icon: "error",
+              title: err.response.data.code,
+              text: err.response.data.message,
+            });
       })
       .finally(() => {
         setLoading(false);
@@ -91,7 +110,13 @@ function Dashboard() {
         setHealth(result[1]);
       })
       .catch((err) => {
-        console.log(err);
+        err.response.status === 429
+          ? Navigate("/informasi")
+          : Swal.fire({
+              icon: "error",
+              title: err.response.data.code,
+              text: err.response.data.message,
+            });
       })
       .finally(() => {
         setLoading(false);
@@ -107,7 +132,13 @@ function Dashboard() {
         setScience(result[0]);
       })
       .catch((err) => {
-        console.log(err);
+        err.response.status === 429
+          ? Navigate("/informasi")
+          : Swal.fire({
+              icon: "error",
+              title: err.response.data.code,
+              text: err.response.data.message,
+            });
       })
       .finally(() => {
         setLoading(false);
@@ -123,7 +154,13 @@ function Dashboard() {
         setSports(result[0]);
       })
       .catch((err) => {
-        console.log(err);
+        err.response.status === 429
+          ? Navigate("/informasi")
+          : Swal.fire({
+              icon: "error",
+              title: err.response.data.code,
+              text: err.response.data.message,
+            });
       })
       .finally(() => {
         setLoading(false);
@@ -140,6 +177,13 @@ function Dashboard() {
       })
       .catch((err) => {
         console.log(err);
+        err.response.status === 429
+          ? Navigate("/informasi")
+          : Swal.fire({
+              icon: "error",
+              title: err.response.data.code,
+              text: err.response.data.message,
+            });
       })
       .finally(() => {
         setLoading(false);

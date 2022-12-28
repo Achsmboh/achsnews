@@ -5,6 +5,7 @@ import Categories from "../pages/Categories";
 import Detail from "../pages/Detail";
 import Search from "../pages/Search";
 import Search2 from "../pages/Search2";
+import Informasi from "../pages/Informasi";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/detail/:title" element={<Detail />} />
         <Route path="/search/:id" element={<Search />} />
         <Route path="/cari/:id" element={<Search2 />} />
+        <Route path="/informasi" element={<Informasi />} />
       </Routes>
     </BrowserRouter>
   );
