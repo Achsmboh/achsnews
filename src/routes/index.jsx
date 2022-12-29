@@ -6,6 +6,7 @@ import Detail from "../pages/Detail";
 import Search from "../pages/Search";
 import Search2 from "../pages/Search2";
 import Informasi from "../pages/Informasi";
+import NotFound from "../pages/NotFound";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/search/:id" element={<Search />} />
         <Route path="/cari/:id" element={<Search2 />} />
         <Route path="/informasi" element={<Informasi />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

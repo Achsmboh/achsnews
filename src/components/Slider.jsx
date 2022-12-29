@@ -19,8 +19,8 @@ export default function Slider({ image }) {
 
   const startSlider = () => {
     setInterval(() => {
-      handlePrev();
-    }, 10000);
+      handleNext();
+    }, 1000);
   };
 
   const handleNext = () => {

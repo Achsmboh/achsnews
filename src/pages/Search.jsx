@@ -30,7 +30,7 @@ function Search() {
     axios
       .get(
         `
-    https://newsapi.org/v2/top-headlines?q=${title}&country=id&pageSize=8&page=${page}&apiKey=${process.env.REACT_APP_API_KEY}`
+    https://newsapi.org/v2/top-headlines?q=${title}&country=id&pageSize=10&page=${page}&apiKey=${process.env.REACT_APP_API_KEY}`
       )
       .then((ress) => {
         const result = ress.data.articles;
@@ -113,7 +113,7 @@ function Search() {
           <button onClick={() => handlePrev()} disabled={page === 1 ? true : false} className="btn btn-outline">
             Previous page
           </button>
-          <button onClick={() => handleNext()} disabled={datasLength < 8 ? true : false} className="btn btn-outline">
+          <button onClick={() => handleNext()} disabled={datasLength < 10 ? true : false} className="btn btn-outline">
             Next
           </button>
         </div>

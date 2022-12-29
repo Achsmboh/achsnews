@@ -25,37 +25,37 @@ const Navbar = ({ onSubmit, onChange, border }) => {
         <div className="lg:flex md:flex items-center hidden">
           <ul className="flex lg:gap-14 gap-2 text-brown font-Inter font-bold justify-between h-full items-center">
             <li className="">
-              <button onClick={() => handleCategory("Business")} className={`hover:border-b-4 ${border == "Business" ? "border" : ""}-b-4 border-b-brown hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm`}>
+              <button onClick={() => handleCategory("Business")} className={`hover:border-b-4 border-${border == "Business" ? "b" : ""}-4 border-b-brown hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm`}>
                 Business
               </button>
             </li>
             <li>
-              <button onClick={() => handleCategory("Entertainment")} className={` ${border === "Entertainment" ? "border" : ""}-b-4 border-b-brown hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm`}>
+              <button onClick={() => handleCategory("Entertainment")} className={` border-${border === "Entertainment" ? "b" : ""}-4 border-b-brown hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm`}>
                 Entertainment
               </button>
             </li>
             <li>
-              <button onClick={() => handleCategory("General")} className={`${border === "General" ? "border" : ""}-b-4 border-b-brown hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm`}>
+              <button onClick={() => handleCategory("General")} className={`border-${border === "General" ? "b" : ""}-4 border-b-brown hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm`}>
                 General
               </button>
             </li>
             <li>
-              <button onClick={() => handleCategory("Health")} className={`${border == "Health" ? "border" : ""}-b-4 border-b-brown hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm`}>
+              <button onClick={() => handleCategory("Health")} className={`border-${border == "Health" ? "b" : ""}-4 border-b-brown hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm`}>
                 Health
               </button>
             </li>
             <li>
-              <button onClick={() => handleCategory("Science")} className={`${border === "Science" ? "border" : ""}-b-4 border-b-brown hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm`}>
+              <button onClick={() => handleCategory("Science")} className={`border-${border === "Science" ? "b" : ""}-4 border-b-brown hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm`}>
                 Science
               </button>
             </li>
             <li>
-              <button onClick={() => handleCategory("Sports")} className={`${border === "Sports" ? "border" : ""}-b-4 border-b-brown hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm`}>
+              <button onClick={() => handleCategory("Sports")} className={`border-${border === "Sports" ? "b" : ""}-4 border-b-brown hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm`}>
                 Sports
               </button>
             </li>
             <li>
-              <button onClick={() => handleCategory("Technology")} className={`${border === "Technology" ? "border" : ""}-b-4 border-b-brown hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm`}>
+              <button onClick={() => handleCategory("Technology")} className={`border-${border === "Technology" ? "b" : ""}-4 border-b-brown hover:border-b-4 hover:border-b-brown hover:scale-105 transition cursor-pointer text-sm`}>
                 Technology
               </button>
             </li>

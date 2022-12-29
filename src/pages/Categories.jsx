@@ -82,7 +82,7 @@ function Categories() {
   return (
     <Layout border={category} onChange={(e) => setTitle(e.target.value)} onSubmit={() => handleSubmit()}>
       <div className="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1">
-        <div className="lg:col-span-2 md:col-span-2 my-2 ">
+        <div className="lg:col-span-2 md:col-span-2 mt-1 lg:my-0 my-2 ">
           <div className="w-full h-96 shadow-2xl rounded-2xl">{loading ? <LoadingTwo /> : <Slider image={image} />}</div>
         </div>
         {loading ? (
