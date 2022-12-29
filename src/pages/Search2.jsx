@@ -30,7 +30,7 @@ function Search2() {
     axios
       .get(
         `
-    https://newsapi.org/v2/top-headlines?q=${search}&country=id&pageSize=8&page=${page}&apiKey=${process.env.REACT_APP_API_KEY}`
+    https://newsapi.org/v2/top-headlines?q=${search}&country=id&pageSize=10&page=${page}&apiKey=${process.env.REACT_APP_API_KEY}`
       )
       .then((ress) => {
         const result = ress.data.articles;
@@ -65,7 +65,7 @@ function Search2() {
         title: title,
       },
     });
-    event.preventDevault("");
+    event.preventDevault();
   }
 
   const handlePrev = () => {
@@ -114,7 +114,7 @@ function Search2() {
           <button onClick={() => handlePrev()} disabled={page === 1 ? true : false} className="btn btn-outline">
             Previous page
           </button>
-          <button onClick={() => handleNext()} disabled={datasLength < 8 ? true : false} className="btn btn-outline">
+          <button onClick={() => handleNext()} disabled={datasLength < 10 ? true : false} className="btn btn-outline">
             Next
           </button>
         </div>
