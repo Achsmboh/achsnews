@@ -1,11 +1,12 @@
 <h1 align="center">AchsNews.</h1>
 
-<h4 align="center">Link Deploy : on progress </h4>
-<h4 align="center">Link Desain Figma : https://www.figma.com/file/0sCwBGdThc0FkeH5eWDulB/AchsNews?node-id=1%3A2&t=M8rw7QoMxYVrgaZN-1 </h4>
-
+<p align="center">Link Deploy : https://achsnews.netlify.app/ </p>
+<p align="center">Maaf, web ini hanya dapat diakses di localhost karena permintaan dari browser tidak diizinkan pada rencana Developer, kecuali dari localhost.</p>
+<p align="center">Link Desain Figma : https://www.figma.com/file/0sCwBGdThc0FkeH5eWDulB/AchsNews?node-id=1%3A2&t=M8rw7QoMxYVrgaZN-1 </p>
 
 ## About Project
-<h4 align="center">AchsNews. adalah salah satu web portfolio saya yang berisi tentang kumpulan berita yang didapat dari NewsAPI</h4>
+
+<h4 align="center">"AchsNews adalah sebuah situs web yang merupakan salah satu portfolio saya. Web ini memanfaatkan API dari News API untuk menampilkan berita terbaru dan terpercaya dari seluruh dunia. Saya hanya mengambil sumber berita dari API News API dan menampilkannya di situs web ini, tanpa mengubah atau memodifikasi informasi yang disajikan. Saya membuat web ini sebagai contoh proyek saya yang memanfaatkan API dari layanan luar dan dapat menampilkan data secara dinamis. Semoga web ini dapat memberikan gambaran tentang kemampuan saya dalam bidang ini dan memberikan manfaat bagi pengunjung yang ingin mencari informasi terbaru."</h4>
 
 # Getting Started with Create React App
 
