@@ -110,10 +110,10 @@ function Search() {
       </div>
       <div className="lg:col-span-5 md:col-span-2 col-span-1 flex justify-center items-center">
         <div className="btn-group grid grid-cols-2">
-          <button onClick={() => handlePrev()} disabled={page === 1 ? true : false} className="btn btn-outline">
+          <button onClick={() => handlePrev()} disabled={page === 1 ? true : false} className="btn btn-outline disabled:hover:bg-transparent hover:bg-brown hover:text-brownmuda text-brown">
             Previous page
           </button>
-          <button onClick={() => handleNext()} disabled={datasLength < 10 ? true : false} className="btn btn-outline">
+          <button onClick={() => handleNext()} disabled={datasLength < 10 ? true : false} className="btn btn-outline disabled:hover:bg-transparent hover:bg-brown hover:text-brownmuda text-brown">
             Next
           </button>
         </div>

@@ -64,7 +64,7 @@ const Navbar = ({ onSubmit, onChange, border }) => {
         <div className="h-16 lg:flex items-center hidden">
           <form onSubmit={onSubmit} className="form-control ">
             <div className="input-group">
-              <input onChange={onChange} type="text" placeholder="Search…" className="input input-bordered focus:outline-brown bg-white" />
+              <input onChange={onChange} type="text" placeholder="Search…" className="input text-brown input-bordered focus:outline-brown bg-white" />
               <button className="btn btn-square bg-brown border-none">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -85,7 +85,7 @@ const Navbar = ({ onSubmit, onChange, border }) => {
                 <div className="w-full ">
                   <form onSubmit={onSubmit} className="form-control w-full bg-red-600-red-300">
                     <div className="input-group w-full">
-                      <input onChange={onChange} type="text" placeholder="Search…" className="input input-bordered focus:outline-brown w-full bg-white" />
+                      <input onChange={onChange} type="text" placeholder="Search…" className="input text-brown input-bordered focus:outline-brown w-full bg-white" />
                       <button className="btn btn-square bg-brown border-none">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
