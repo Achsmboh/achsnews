@@ -104,10 +104,10 @@ function Categories() {
 
         <div className="lg:col-span-5 md:col-span-2 col-span-1 flex justify-center items-center">
           <div className="btn-group grid grid-cols-2">
-            <button disabled={page === 1 ? true : false} className="btn btn-outline" onClick={() => handlePrev()}>
+            <button disabled={page === 1 ? true : false} className="btn btn-outline text-brown disabled:hover:bg-transparent hover:bg-brown hover:text-brownmuda" onClick={() => handlePrev()}>
               Previous page
             </button>
-            <button disabled={datas.length < 8 ? true : false} className="btn btn-outline" onClick={() => handleNext()}>
+            <button disabled={datas.length < 8 ? true : false} className="btn btn-outline disabled:hover:bg-transparent hover:bg-brown hover:text-brownmuda text-brown" onClick={() => handleNext()}>
               Next
             </button>
           </div>
